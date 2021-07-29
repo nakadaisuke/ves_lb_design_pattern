@@ -38,7 +38,7 @@ Sample config: [act_act_lb1.yaml](./yaml/act_act_lb/act_act_lb1.yaml)
 
 #### 3. Confirm traffic steering
 
-Open the FQDN configured by #2 by your browser, you can see the traffic steers by round robbin fashion.
+Open the FQDN configured by #2 by your browser or `curl`, you can see the traffic steers by round robbin fashion.
 
 ## Multiple origin pools having one or more endpoints respectively
 
