@@ -1,0 +1,35 @@
+metadata:
+  name: act-act-lb
+  namespace: lb
+  labels: {}
+  annotations: {}
+  description: null
+  disable: null
+spec:
+  domains:
+    - ves-io-825ad8a5-26ac-4d4d-9ac8-65030c54ca6e.ac.vh.ves.io
+  http:
+    ? dns_volterra_managed
+  advertise_on_public_default_vip: {}
+  default_route_pools:
+    - pool:
+        namespace: lb
+        name: act-act-op1
+      weight: 1
+      endpoint_subsets: {}
+  routes: null
+  cors_policy: null
+  disable_waf: {}
+  add_location: null
+  no_challenge: {}
+  more_option: null
+  user_identification: null
+  disable_rate_limit: {}
+  malicious_user_mitigation: null
+  waf_exclusion_rules: null
+  blocked_clients: null
+  trusted_clients: null
+  ddos_mitigation_rules: null
+  service_policies_from_namespace: {}
+  round_robin: {}
+resource_version: null

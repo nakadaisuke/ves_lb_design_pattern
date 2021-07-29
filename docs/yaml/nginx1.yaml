@@ -1,0 +1,79 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: nginx1
+  annotations:
+    ves.io/sites: system/site1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx1
+  template:
+    metadata:
+      labels:
+        app: nginx1
+    spec:
+      containers:
+        - name: nginx1
+          image: dnakajima/inbound-app:1.0
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: nginx2
+  annotations:
+    ves.io/sites: system/site2
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx2
+  template:
+    metadata:
+      labels:
+        app: nginx2
+    spec:
+      containers:
+        - name: nginx2
+          image: dnakajima/inbound-app:1.0
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: nginx1
+  labels:
+    app: nginx1
+  annotations:
+    ves.io/sites: system/site1
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  selector:
+    app: nginx1
+  type: ClusterIP
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: nginx2
+  labels:
+    app: nginx2
+  annotations:
+    ves.io/sites: system/site2
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  selector:
+    app: nginx2
+  type: ClusterIP
