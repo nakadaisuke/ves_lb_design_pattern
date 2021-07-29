@@ -36,6 +36,9 @@ Sample config: [act_act_op1.yaml](./yaml/act_act_lb/act_act_op1.yaml)
 Configure Load balanacer associating with the Origin pool above.
 Sample config: [act_act_lb1.yaml](./yaml/act_act_lb/act_act_lb1.yaml)
 
+#### 3. Confirm traffic steering
+
+Open the FQDN configured by #2 by your browser, you can see the traffic steers by round robbin fashion.
 
 ## Multiple origin pools having one or more endpoints respectively
 
