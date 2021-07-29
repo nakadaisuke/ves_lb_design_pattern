@@ -12,6 +12,31 @@ There are two configuration designs about Active Active load balancing.
 This model steers the traffic where the endpoints are located. When the traffic reaches Cluster, Cluster selects a certain Endpoint based on “Endpoint Selection”. The typical use case of this model is that a user wants to steer the traffic to the same site as the Load balancer.
 When the user wants to use “Cookie Based stickiness”, the user must use this model. The algorithm doesn’t work when the multiple Origin pools are configured in the Load balancer.
 
+This is the sample configuration.
+There are two kubernetes service associating with a single Origin pool.
+
+![act_act_lb_sample1](./pics/act_act_lb_sample1.png)
+
+### Create Origin pool and Load balancer
+
+Precondition:
+
+1. There are two sites `site1` and `site2`
+2. Apply [nginx1.yaml](./yaml/nginx1.yaml) by kubectl apply -f
+
+<b>VoltMesh Configuration</b>
+
+#### 1. Create Origin pool
+
+Configure two k8s service into one origin pool.
+Sample config: [act_act_op1.yaml](./yaml/act_act_lb/act_act_op1.yaml)
+
+#### 2. Create Load balancer
+
+Configure Load balanacer associating with the Origin pool above.
+Sample config: [act_act_lb1.yaml](./yaml/act_act_lb/act_act_lb1.yaml)
+
+
 ## Multiple origin pools having one or more endpoints respectively
 
 ![act_act_lb2](./pics/act_act_lb2.png)
