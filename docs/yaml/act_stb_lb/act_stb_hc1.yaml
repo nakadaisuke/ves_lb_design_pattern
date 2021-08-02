@@ -1,0 +1,20 @@
+metadata:
+  name: act-stb-hc
+  namespace: lb
+  labels: {}
+  annotations: {}
+  description: null
+  disable: null
+spec:
+  http_health_check:
+    use_origin_server_name: {}
+    path: /
+    use_http2: null
+    headers: {}
+    request_headers_to_remove: null
+  timeout: 1
+  interval: 1
+  unhealthy_threshold: 3
+  healthy_threshold: 3
+  jitter_percent: 30
+resource_version: null

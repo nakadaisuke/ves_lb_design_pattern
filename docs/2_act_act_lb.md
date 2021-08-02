@@ -17,7 +17,7 @@ The algorithm is defined by user configuration such as Roudrobin, Least connecti
 ### Sample configuration
 
 There are two kubernetes service associating with a single Origin pool.
-The Origin pool strees the traffic where it reaches to pods. The Load balance 
+The Origin pool strees the traffic where it reaches to pods.
 
 ![act_act_lb_sample1](./pics/act_act_lb_sample1.png)
 
@@ -26,7 +26,7 @@ The Origin pool strees the traffic where it reaches to pods. The Load balance
 Precondition:
 
 1. There are two sites `site1` and `site2`
-2. Apply [nginx1.yaml](./yaml/nginx1.yaml) by kubectl apply -f
+2. Apply [act_act_nginx1.yaml](./yaml/act_act_lb/act_act_nginx1.yaml) by kubectl apply -f
 
 <b>VoltMesh Configuration</b>
 
@@ -44,7 +44,6 @@ There are two ways to apply yaml file. All Volterra object has UI From or Volter
 Open the any configuration object and Click `JSON` tab in the window. The JSON window can be selected JSON or YAML (Default is JSON). Copy and paste the sample configuration then Save and Exit.
 
 ![apply_yaml_ui](./pics/apply_yaml_ui.png)
-
 
 #### 2. Create Load balancer
 

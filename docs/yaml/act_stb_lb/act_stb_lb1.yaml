@@ -1,0 +1,62 @@
+metadata:
+  name: act-stb-op1
+  namespace: lb
+  labels: {}
+  annotations: {}
+  description: null
+  disable: null
+spec:
+  domains:
+    - ves-io-f4e79b85-d2df-4c6a-b9a1-57198b5ad037.ac.vh.ves.io
+  http:
+    ? dns_volterra_managed
+  advertise_on_public_default_vip: {}
+  default_route_pools: null
+  routes:
+    - simple_route:
+        http_method: ANY
+        path:
+          regex: (.*?)
+        origin_pools:
+          - pool:
+              tenant: volt-field-vhptnhxg
+              namespace: lb
+              name: act-stb-op1
+            weight: 1
+            endpoint_subsets: {}
+        auto_host_rewrite: {}
+        advanced_options:
+          common_hash_policy: {}
+          priority: DEFAULT
+          endpoint_subsets:
+            app: active
+          disable_prefix_rewrite: {}
+          request_headers_to_add: null
+          request_headers_to_remove: null
+          response_headers_to_add: null
+          response_headers_to_remove: null
+          disable_location_add: null
+          disable_waf: {}
+          cors_policy: null
+          disable_spdy: {}
+          disable_web_socket_config: {}
+          default_retry_policy: {}
+          timeout: 30000
+          common_buffering: {}
+          disable_mirroring: {}
+          retract_cluster: {}
+  cors_policy: null
+  disable_waf: {}
+  add_location: null
+  no_challenge: {}
+  more_option: null
+  user_identification: null
+  disable_rate_limit: {}
+  malicious_user_mitigation: null
+  waf_exclusion_rules: null
+  blocked_clients: null
+  trusted_clients: null
+  ddos_mitigation_rules: null
+  service_policies_from_namespace: {}
+  round_robin: {}
+resource_version: null

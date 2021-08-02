@@ -1,0 +1,49 @@
+metadata:
+  name: act-stb-op1
+  namespace: lb
+  labels: {}
+  annotations: {}
+  description: null
+  disable: null
+spec:
+  origin_servers:
+    - labels: {}
+      k8s_service:
+        service_name: act-nginx1.lb
+        site_locator:
+          site:
+            tenant: volt-field-vhptnhxg
+            namespace: system
+            name: site1
+        vk8s_networks: {}
+    - labels: {}
+      k8s_service:
+        service_name: stb-nginx2.lb
+        site_locator:
+          site:
+            tenant: volt-field-vhptnhxg
+            namespace: system
+            name: site2
+        vk8s_networks: {}
+  no_tls: {}
+  port: 80
+  same_as_endpoint_port: {}
+  healthcheck:
+    - tenant: volt-field-vhptnhxg
+      namespace: lb
+      name: act-stb-hc
+  loadbalancer_algorithm: LB_OVERRIDE
+  endpoint_selection: LOCAL_PREFERRED
+  advanced_options:
+    connection_timeout: 2000
+    http_idle_timeout: 300000
+    disable_circuit_breaker: {}
+    disable_outlier_detection: {}
+    no_panic_threshold: {}
+    enable_subsets:
+      endpoint_subsets:
+        - keys:
+            - app
+      any_endpoint: {}
+    http2_options: null
+resource_version: null

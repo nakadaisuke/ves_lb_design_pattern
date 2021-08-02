@@ -1,0 +1,79 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: act-nginx1
+  annotations:
+    ves.io/sites: system/site1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: active
+  template:
+    metadata:
+      labels:
+        app: active
+    spec:
+      containers:
+        - name: act-nginx1
+          image: dnakajima/inbound-app:1.0
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: stb-nginx2
+  annotations:
+    ves.io/sites: system/site2
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: standby
+  template:
+    metadata:
+      labels:
+        app: standby
+    spec:
+      containers:
+        - name: stb-nginx2
+          image: dnakajima/inbound-app:1.0
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: act-nginx1
+  labels:
+    app: active
+  annotations:
+    ves.io/sites: system/site1
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  selector:
+    app: active
+  type: ClusterIP
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: stb-nginx2
+  labels:
+    app: standby
+  annotations:
+    ves.io/sites: system/site2
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  selector:
+    app: standby
+  type: ClusterIP
