@@ -1,0 +1,25 @@
+metadata:
+  name: act-act-site2
+  namespace: lb
+  labels: {}
+  annotations: {}
+  description: null
+  disable: null
+spec:
+  origin_servers:
+    - labels: {}
+      k8s_service:
+        service_name: nginx2.lb
+        site_locator:
+          site:
+            namespace: system
+            name: site2
+        vk8s_networks: {}
+  no_tls: {}
+  port: 80
+  same_as_endpoint_port: {}
+  healthcheck: null
+  loadbalancer_algorithm: LB_OVERRIDE
+  endpoint_selection: LOCAL_PREFERRED
+  advanced_options: null
+resource_version: null
