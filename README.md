@@ -14,5 +14,5 @@ Table of contents
 
 1. [Load balancer and Origin pool](./docs/1_lb_and_origin.md)
 2. [Active Active load balancing](./docs/2_act_act_lb.md)
-3. Active Standby load balancing
+3. [Active Standby load balancing](./docs/3_act_stb_lb.md)
 4. Weighted load balancing
