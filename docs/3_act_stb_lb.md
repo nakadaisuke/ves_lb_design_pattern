@@ -38,7 +38,7 @@ Sample config: [act_stb_hc1.yaml](./yaml/act_stb_lb/act_stb_hc1.yaml)
 #### 2. Create Origin pool
 
 Configure two k8s service into one origin pool.
-Sample config: [act_stb_op1.yaml](./yaml/act_act_lb/act_stb_op1.yaml)
+Sample config: [act_stb_op1.yaml](./yaml/act_stb_lb/act_stb_op1.yaml)
 
 The point in this configuration is the `endpoint-subsets`. This field defines which label key is used for the endpoint selection.
 
